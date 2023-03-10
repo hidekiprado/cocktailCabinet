@@ -1,0 +1,30 @@
+/* Only for the input that pops out the label at signup/login */
+.divLayoutInput {
+  position: relative;
+  margin: 20px;
+}
+.inputLayout {
+  border-radius: 5px;
+  height: 30px;
+  padding: 10px;
+  width: 100%;
+}
+.inputLayout:focus {
+  outline-color: #278aa9;
+}
+.inputLayout:not(:placeholder-shown) + .labelLayout {
+  transform: translate(0, -100%);
+  opacity: 1;
+}
+.labelLayout {
+  /* Position the label */
+  left: 8px;
+  position: absolute;
+  top: 0;
+
+  background-color: transparent;
+
+  /* Hide it by default */
+  opacity: 0;
+  transition: all 200ms;
+}

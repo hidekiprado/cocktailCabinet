@@ -1,0 +1,577 @@
+body {
+  margin: 0;
+  height: 100%;
+  justify-content: center;
+  background-image: url("../images/woodbackground.jpeg");
+  background-repeat: repeat; 
+  /* background-size: cover; */
+  font-family: 'Comfortaa', cursive;
+  text-transform: uppercase;
+
+}
+
+/* ---------header--------- */
+#header-nav {
+  display: flex;
+  flex-wrap: wrap;
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  width: 98%;  
+  min-height: 5rem;
+  padding: 10px;
+  justify-content: center;
+  border-radius: 20px;
+  border-bottom: 1px solid #d4d4d4;
+  box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
+  background-color:#755139;
+  align-items: center;
+}
+
+#h1header {
+  align-self: left;
+  justify-content: space-between;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+#logOutButton {
+  position: absolute;
+  left: 10%;
+  background-color:#755139;
+  color: #F2EDD7;
+  text-transform: uppercase;
+  padding: 20px 30px;
+}
+
+#h1AfterLogin {
+  position: absolute;
+  text-transform: uppercase;
+  font-weight: bold;
+  animation: fadeIn 0.4s;
+  
+}
+
+/* ---------page/mainbody--------- */
+
+#page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5%;
+  gap: 10px;
+}
+
+
+.searchDivMain {
+  display: flex;
+  flex-direction: column;
+  margin: 3%;  
+  border-radius: 10px;
+  border-top: 10%;  
+  transition: 0.7s;
+  height: 60%;
+  width: 80%;
+  animation: fadeIn 0.7s;
+}
+.loginDivMain,
+.signUpDivMain {
+  display: flex;
+  gap: 10%;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  margin: 10%;
+  padding: 10%;
+  height: 60%;
+  width: 80%;
+  transition: 0.7s;
+  animation: fadeIn 0.7s;
+}
+.loginDivMain:hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.signUpDivLeft,
+.loginDivLeft,
+.signUpDivRight,
+.loginDivRight {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  align-content: center;
+  
+}
+#buttonGetCabinet[disabled="disabled"],
+#buttonGetCabinet:disabled {
+  opacity: 0.3;
+}
+
+/* CABINET VIEW */
+
+.cabinetBottle {
+  
+  border-radius: 5px;
+  width: 300px;
+  display: flex;
+  /* flex-wrap: wrap; */
+  justify-content: center;
+  margin: auto;
+  align-content: center;
+  align-self: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+
+}
+
+.bottleImage {
+  /* max-height: 15rem; */
+  justify-content: center;
+  max-height: 60%;
+  max-width: 60%;
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.bottleName {
+  padding: 10 20px;
+  font-size: 20px;
+  margin: 5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  align-self: center;
+  text-align: center;
+  
+  color: #F2EDD7;
+}
+
+.bottleVolume {
+  padding: 10 20px;
+  margin: 5px;
+  font-size: 16px;
+  font-weight:300;
+  text-align: center;
+  align-self: center;
+  
+  color: #F2EDD7;
+  padding-left: 20px;
+  padding-right: 20px;
+  
+  
+}
+
+.bottleUpdateBtn{
+  text-transform: uppercase;
+}
+
+.bottleButton {
+  border: 1px solid red;
+  height: fit-content;
+  width: fit-content;
+  font-size: 12;
+  text-transform: uppercase;
+  align-self: center;
+}
+
+.bottleLabel {
+  align-content: bottom;
+  align-items: center;
+  flex-direction:column;
+  justify-content: center;
+  display: flex;
+}
+
+
+/* add alcohol and logout reconfirm modal */
+.logOutReconfirm,
+#divAddForm{
+  background-color: #ffffff;
+  position: fixed;
+  z-index: 1;
+  top:25%;
+  left: 25%;
+  right: 25%;
+  border: 15px solid #6C4707;
+  /* border-radius: 10px; */
+  padding: 20px;
+  animation: fadeIn 0.4s;  
+  background-image: url("../images/blackboard.jpeg");
+  background-size: cover;
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+#addForm{
+  width: 100%;
+  text-align: center;
+}
+
+
+
+/* recipe display */
+
+.recipeBook {
+  position: fixed;
+  z-index: 2;
+  top:25%;
+  right: 25%;
+  left: 25%;
+  border: 15px solid #6C4707;
+  /* border-radius: 10px; */
+  padding: 20px;
+  animation: fadeIn 0.4s;  
+  background-image: url("../images/blackboard.jpeg");
+  background-size: cover;
+  text-transform: uppercase;
+  text-align: center;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  overflow-y: auto;
+  height: 40%;
+  align-content: center;
+  justify-content: center;
+}
+
+.recipePage {
+  padding: top 50px;
+  padding: bottom 20px;
+  border: 20px;
+  margin-bottom: 15px;
+}
+
+#recipeBookHeading{
+  font-weight: bold;
+  font-size: 18px;
+  padding: 0 20%;
+  text-transform: uppercase;
+  color: #F2EDD7;
+  justify-self: center;
+  display: flex;
+  text-align: center;
+  align-self: center;
+  justify-content: center;
+  align-content: center;
+}
+
+
+.selectCocktailBtn {
+  background-color:#755139;
+  color: #F2EDD7;
+  text-transform: uppercase;
+  margin: 5px;
+  padding: 10px 20px;
+  align-self: center;
+
+}
+
+.recipeTitle {
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 26px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 100px;
+  color: #F2EDD7;
+  background-color: #f2edd726;
+}
+.recipeTitle:hover {
+  background-color: #f2edd75d;
+}
+
+.recipeDescription {
+  text-transform: uppercase;
+  padding: top 50px;
+  padding: bottom 50px;
+  border: 50px;
+  color: #F2EDD7;
+}
+
+.recipeProcedure {
+  text-transform: uppercase;
+  padding: top 50px;
+  padding: bottom 50px;
+  border: 50px;
+  color: #F2EDD7;
+}
+
+.selectCocktailBtn {
+  background-color:#755139;
+  color: #F2EDD7;
+  text-transform: uppercase;
+  margin: 5px;
+  padding: 10px 20px;
+}
+
+
+
+/* modal */
+
+.containerPopup,
+.modal {
+  position: fixed;
+  /* display: none; */
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background: #000;
+  opacity: 60%;
+}
+
+/* header button */
+
+#buttonHeader {
+  
+  justify-content: center;
+  display: flex;
+  padding: 30px 0;
+  align-items: center;
+}
+
+#buttonSearch{
+  background-color: #1c87c9;
+  border: none;
+  color: #F2EDD7;
+  cursor: pointer;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 20px;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none; 
+  animation: glowing 1500ms infinite;
+  height: 60px;
+}
+
+/* @keyframes glowing {
+  0% {
+    background-color: #2ba805;
+    box-shadow: 0 0 3px #2ba805;
+  }
+  50% {
+    background-color: #49e819;
+    box-shadow: 0 0 10px #49e819;
+  }
+  100% {
+    background-color: #2ba805;
+    box-shadow: 0 0 3px #2ba805;
+  }
+} */
+
+@keyframes glowing {
+  0% {
+    background-color: #00BFFF;
+    box-shadow: 0 0 3px #00BFFF;
+  }
+  50% {
+    background-color: #0099CC;
+    box-shadow: 0 0 10px #0099CC;
+  }
+  100% {
+    background-color: #00BFFF;
+    box-shadow: 0 0 3px #00BFFF;
+  }
+}
+
+#buttonAddCabinet,
+#buttonDeleteCabinet {
+  min-height: 50px;
+  font-size: 40;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  margin: 40px 20px;
+  background-color:#755139;
+  color: #F2EDD7;
+}
+
+
+
+
+#cabinet {
+  justify-content: space-around;
+  align-content: left;
+  display: flex;
+  flex-wrap: wrap;
+  border: 10px solid black;
+  padding: 30px;
+}
+
+
+
+/* signup loader */
+
+#cancel {
+  padding: 10px 11px;
+}
+
+.volumeUpdateModal {
+  position: fixed;
+  /* display: none; */
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background: #000;
+  opacity: 0.6;
+}
+
+.volumeUpdateModalContainer{
+  position: fixed;
+  z-index: 2;
+  top:25%;
+  left: 25%;
+  right: 25%;
+  border: 15px solid #6C4707;
+  /* border-radius: 10px; */
+  padding: 20px;
+  animation: fadeIn 0.4s;  
+  background-image: url("../images/blackboard.jpeg");
+  background-size: cover;
+  text-transform: uppercase;
+  text-align: center;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+
+}
+
+
+/* confirm remove alcohol modal */
+.removeAlcoholModalContainer{
+  position: fixed;
+  z-index: 2;
+  top:25%;
+  left: 25%;
+  right: 25%;
+  border: 15px solid #6C4707;
+  /* border-radius: 10px; */
+  padding: 20px;
+  animation: fadeIn 0.4s;  
+  background-image: url("../images/blackboard.jpeg");
+  background-size: cover;
+  
+  text-transform: uppercase;
+  text-align: center;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+};
+
+.RAMbody{
+  justify-content: space-between;
+}
+
+.RAMtitle{
+  color:#F2EDD7;
+  padding: 15px 0px;
+}
+
+/* ----------volume update modal-------- */
+.volumeUpdateModalTitle{
+  padding: 10px 20px;
+  color: #F2EDD7;
+  font-size: 20px;
+}
+
+.volumeUpdateCancel,.volumeUpdateButton,.volumeUpdateInput, .RAMyes,
+.RAMno{
+  background-color:#755139;
+  color: #F2EDD7;
+  text-transform: uppercase;
+  margin: 5px;
+  padding: 10px 20px;
+}
+
+.volumeUpdateInput{
+  background-color:#F2EDD7;
+  color: #755139;
+  text-transform: uppercase;
+  margin: 5px;
+  padding: 10px 20px;
+  width: fit-content;
+  
+}
+
+.bottleUpdateBtn,.bottleRemoveBtn{
+  background-color:#755139;
+  color: #F2EDD7;
+  text-transform: uppercase;
+  margin: 5px;
+  padding: 10px 20px;
+}
+
+.deleteCabinetYes,.deleteCabinetNo{
+  background-color:#755139;
+  color: #F2EDD7;
+  text-transform: uppercase;
+  margin: 5px;
+  padding: 10px 20px;
+
+}
+
+.deleteCabinetModalTitle{
+  padding: 10px;
+  margin: 5px;
+}
+
+
+#addAlcoholTitle{
+  font-size: 20px;
+}
+
+#selectAlcohol,#inputVolume{
+  text-transform: uppercase;
+  margin: 5px;
+  padding: 10px 20px;
+  border: 5px 10px;
+}
+
+#cancelAddAlcohol,#addAlcoholButton{
+  background-color:#755139;
+  color: #F2EDD7;
+  text-transform: uppercase;
+  margin: 5px;
+  padding: 10px 20px;
+}
+
+#buttonUnlockCabinet, #buttonSignup, #buttonUnlock, #buttonGetCabinet, #signupLoaderButton, .logoutButtons{
+  background-color:#755139;
+  color: #F2EDD7;
+  text-transform: uppercase;
+  margin: 5px;
+  padding: 10px 20px;
+}
+
+#signupTitle, #alreadyHaveTitle, #loginTitle, #noLoginTitle, #signupLoaderTitle{
+  font-size: 20px;
+  color: #F2EDD7;
+  text-transform: uppercase;
+
+}
+
+.signUpLoader{
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20%;
+  /* background-color:#755139; */
+}
+
+.labelLayout {
+  font-size: 12px;
+  color: white;
+}
