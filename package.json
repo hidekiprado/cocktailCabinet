@@ -14,7 +14,7 @@
     "bcrypt": "^5.0.1",
     "connect-pg-simple": "^7.0.0",
     "dotenv": "^16.0.2",
-    "express": "^4.18.1",
+    "express": "^4.18.2",
     "express-session": "^1.17.3",
     "pg": "^8.8.0",
     "require": "^0.4.4"
