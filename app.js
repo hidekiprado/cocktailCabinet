@@ -5,8 +5,9 @@ const cocktailsController = require("./controller/cocktails");
 const usersController = require("./controller/users");
 
 const app = express();
-const port = process.env.PORT || 3000;
 
+const port = 3001 || 3000;
+// const port = process.env.PORT || 3000;
 app.use(express.static("client"));
 app.use(express.json());
 
@@ -25,7 +26,8 @@ app.use(
       pool: db, // Connects to our postgres db
       createTableIfMissing: true, // Creates a session table in your database (go look at it!)
     }),
-    secret: process.env.EXPRESS_SESSION_SECRET_KEY,
+    // secret: process.env.EXPRESS_SESSION_SECRET_KEY,
+    secret: "223jl23l",
     resave: true,
     saveUninitialized: true,
   })
