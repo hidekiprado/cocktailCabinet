@@ -5,6 +5,7 @@ export const renderCabinetView = () => {
   //creating-----------------------------------
   const divMain = document.createElement("div");
   const cabinet = document.createElement("div");
+  const divCabinet = document.createElement("div");
   const buttonSearch = document.createElement("button");
   const buttonAddCabinet = document.createElement("button");
   const buttonDeleteCabinet = document.createElement("button");
@@ -13,6 +14,7 @@ export const renderCabinetView = () => {
   //setting------------------------------------
   divMain.className = "searchDivMain";
   cabinet.id = "cabinet";
+  divCabinet.id = "divCabinet";
   buttonHeader.id = "buttonHeader";
   buttonSearch.id = "buttonSearch";
   buttonSearch.textContent = "Get me drunk";
@@ -20,7 +22,6 @@ export const renderCabinetView = () => {
   buttonAddCabinet.textContent = "Add to cabinet";
   buttonDeleteCabinet.id = "buttonDeleteCabinet";
   buttonDeleteCabinet.textContent = "Delete Cabinet";
-  cabinet.id = "cabinet";
 
   //API access
   axios
@@ -73,11 +74,8 @@ export const renderCabinetView = () => {
         });
 
         bottleUpdateBtn.addEventListener("click", () => {
-          volumeUpdateModal(item.id,item.name,item.volume,bottleVolume);
-          
+          volumeUpdateModal(item.id, item.name, item.volume, bottleVolume);
         });
-
-
       });
     })
     .catch(
@@ -88,8 +86,9 @@ export const renderCabinetView = () => {
 
   //appending----------------------------------
   buttonHeader.append(buttonAddCabinet, buttonSearch, buttonDeleteCabinet);
+  divCabinet.appendChild(cabinet);
   divMain.append(buttonHeader);
-  divMain.appendChild(cabinet);
+  divMain.appendChild(divCabinet);
   // appending page
   page.replaceChildren(divMain);
 
@@ -99,10 +98,8 @@ export const renderCabinetView = () => {
   buttonDeleteCabinet.addEventListener("click", deleteCabinetWarning);
 };
 
-
 // volume update modal - util
-const volumeUpdateModal = (liquor_id,name,volume,bottleVolume) => {
-  
+const volumeUpdateModal = (liquor_id, name, volume, bottleVolume) => {
   const page = document.querySelector("#page");
 
   // create modal box
@@ -112,27 +109,33 @@ const volumeUpdateModal = (liquor_id,name,volume,bottleVolume) => {
   const volumeUpdateModalContainer = document.createElement("div");
 
   // modal form
-  const volumeUpdateInput = document.createElement("input")
-  const volumeUpdateButton = document.createElement("button")
-  const volumeUpdateCancel = document.createElement("button")
+  const volumeUpdateInput = document.createElement("input");
+  const volumeUpdateButton = document.createElement("button");
+  const volumeUpdateCancel = document.createElement("button");
 
   // setting class tags
-  volumeUpdateModal.className = "volumeUpdateModal"
-  volumeUpdateModalTitle.className = "volumeUpdateModalTitle"
-  volumeUpdateModalBody.className = "volumeUpdateModalBody"
-  volumeUpdateModalContainer.className = "volumeUpdateModalContainer"
-  volumeUpdateInput.className = "volumeUpdateInput"
-  volumeUpdateButton.className = "volumeUpdateButton"
-  volumeUpdateCancel.className = "volumeUpdateCancel"
+  volumeUpdateModal.className = "volumeUpdateModal";
+  volumeUpdateModalTitle.className = "volumeUpdateModalTitle";
+  volumeUpdateModalBody.className = "volumeUpdateModalBody";
+  volumeUpdateModalContainer.className = "volumeUpdateModalContainer";
+  volumeUpdateInput.className = "volumeUpdateInput";
+  volumeUpdateButton.className = "volumeUpdateButton";
+  volumeUpdateCancel.className = "volumeUpdateCancel";
 
   //attach divs
   // volumeUpdateModal.append(volumeUpdateModalContainer);
-  volumeUpdateModalContainer.append(volumeUpdateModalTitle,volumeUpdateModalBody);
-  volumeUpdateModalBody.append(volumeUpdateInput,volumeUpdateButton,volumeUpdateCancel);
-  
-  page.append(volumeUpdateModal)
-  page.append(volumeUpdateModalContainer)
+  volumeUpdateModalContainer.append(
+    volumeUpdateModalTitle,
+    volumeUpdateModalBody
+  );
+  volumeUpdateModalBody.append(
+    volumeUpdateInput,
+    volumeUpdateButton,
+    volumeUpdateCancel
+  );
 
+  page.append(volumeUpdateModal);
+  page.append(volumeUpdateModalContainer);
 
   // giving elements content
   volumeUpdateModalTitle.innerHTML = name;
@@ -143,33 +146,33 @@ const volumeUpdateModal = (liquor_id,name,volume,bottleVolume) => {
 
   volumeUpdateButton.addEventListener("click", () => {
     volume = volumeUpdateInput.value.replace("ml", "");
-          if (!volume || volume == 0 || isNaN(volume)) {
-            volumeUpdateInput.innerHTML = "";
-            return;
-          }
-          const data = {liquor_id, volume};
-          axios
-            .put("/api/cabinet/", data)
-            .then(() => {
-              bottleVolume.innerHTML = volume + "ml";
-              volumeUpdateModal.remove();
-              volumeUpdateModalContainer.remove();
-            })
-            .catch((err) => (page.textContent = err));
-  })
+    if (!volume || volume == 0 || isNaN(volume)) {
+      volumeUpdateInput.innerHTML = "";
+      return;
+    }
+    const data = { liquor_id, volume };
+    axios
+      .put("/api/cabinet/", data)
+      .then(() => {
+        bottleVolume.innerHTML = volume + "ml";
+        volumeUpdateModal.remove();
+        volumeUpdateModalContainer.remove();
+      })
+      .catch((err) => (page.textContent = err));
+  });
 
   volumeUpdateCancel.addEventListener("click", () => {
     volumeUpdateModal.remove();
     volumeUpdateModalContainer.remove();
-  })
+  });
   volumeUpdateModal.addEventListener("click", () => {
     volumeUpdateModal.remove();
     volumeUpdateModalContainer.remove();
-  })
+  });
 };
 
 // remove alcohol from cabinet modal
-const removeAlcoholModal = (id,name) => {
+const removeAlcoholModal = (id, name) => {
   const page = document.querySelector("#page");
 
   // create modal elements
@@ -182,41 +185,36 @@ const removeAlcoholModal = (id,name) => {
 
   // set class tags
   removeAlcoholModal.className = "containerPopup";
-  removeAlcoholModalContainer.className = "removeAlcoholModalContainer"
+  removeAlcoholModalContainer.className = "removeAlcoholModalContainer";
   RAMtitle.className = "RAMtitle";
   RAMbody.className = "RAMbody";
   RAMyes.className = "RAMyes";
   RAMno.className = "RAMno";
 
-  RAMtitle.innerHTML = `Are you sure you want to remove ${ name } from cabinet?`
-  RAMyes.innerHTML = "Yes"
-  RAMno.innerHTML = "No"
+  RAMtitle.innerHTML = `Are you sure you want to remove ${name} from cabinet?`;
+  RAMyes.innerHTML = "Yes";
+  RAMno.innerHTML = "No";
 
   // append
-  removeAlcoholModalContainer.append(RAMtitle,RAMbody);
-  RAMbody.append(RAMyes,RAMno);
+  removeAlcoholModalContainer.append(RAMtitle, RAMbody);
+  RAMbody.append(RAMyes, RAMno);
   page.append(removeAlcoholModal, removeAlcoholModalContainer);
-  
+
   RAMyes.addEventListener("click", () => {
-    axios
-            .delete(`/api/cabinet/${id}`)
-            .then(() => {
-              removeAlcoholModal.remove();
-              removeAlcoholModalContainer.remove();
-              renderCabinetView();
-            })
-  })
+    axios.delete(`/api/cabinet/${id}`).then(() => {
+      removeAlcoholModal.remove();
+      removeAlcoholModalContainer.remove();
+      renderCabinetView();
+    });
+  });
 
   RAMno.addEventListener("click", () => {
     removeAlcoholModal.remove();
     removeAlcoholModalContainer.remove();
-
-  })
+  });
 
   removeAlcoholModal.addEventListener("click", () => {
     removeAlcoholModal.remove();
     removeAlcoholModalContainer.remove();
-
-  })
-
-}
+  });
+};
